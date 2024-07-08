@@ -1,5 +1,5 @@
 # Object Classification using Python Tensorflow
-In this mini-project I intend to test some neural network models to classify two different objects such as images of cats or dogs.
+In this mini-project I intend to test some neural network models to classify two different objects such as images of cats or dogs. My first priority is to maximize the validation accuracy of models of this project.  
 
 ## Models
 The models are based on commonly used networks and modified a bit to satisfy our desired accuracy. Currently the models have a maximum validation accuracy of 81% for cat/dog classification problem.
@@ -52,3 +52,22 @@ Overally, it can be seen that model isn't trained soo well in Cat/Dog test, but 
   <em>Quick CNN Model Accuracy/Loss Per Epoch for Plane/Car</em>
 </p>
 
+## Probable Ways to Improve
+Cats and dogs are visually more similar to each other than, for example, planes and cars. This similarity might make it harder for the network to distinguish between them. Considering tons of breeds out there with many appearance distinctions, we immediately understand that the problem might even be elsewhere.
+
+As the cat and dog dataset issue annoyingly remains, I may want to change the datasets as well as the models. It seems like the accuracy will increase in microscopic scale in this procedure of testing models. I have a limited ideas at the moment that may fix the issue (Or not). Many of these solutions are not even my idea. The hard part is prioritizing these solutions.
+
+### Augmentation Techniques
+Applying various data augmentation techniques (like rotation, flipping, zooming, etc.) to increase the diversity of training data. This may help the network generalize better.
+### Network Architecture
+Tens of models are tested by now and the improvements are very tiny and ignorable. I doubt the problem is with the architecture, because I already demonstrated that the models work perfectly with other datasets. However I include the theoretical architectural problems that the network may have been suffering from. 
+- Network Complexity: It might be that the architecture is too simple or too complex for the task. Ensure that the network has the right balance of depth and width.
+- Overfitting/Underfitting: It might ber that network is overfitting or underfitting. Overfitting can be addressed with regularization techniques like dropout (which I used in all models by now), L2 regularization, etc. Underfitting might require a more complex model which I doubt is needed. 
+- Pre-trained Models: Using a pre-trained model like VGG, ResNet, or EfficientNet and fine-tuning it on cat/dog dataset is one solution, but this is conflicting with the definition of project so I simply skip it for now at least.
+### Training Process
+- Learning Rate: Experimenting with different learning rates. Not probable, but worth a shot. Sometimes learning rate that's too high or too low can lead to low accuracy.
+- Loss Function: Ensuring that an appropriate loss function is used for the binary classification task which must be correct.
+- Optimizer: Different optimizers can lead to different results. We used Adam, but other options to check are RMSprop, or SGD with momentum, or some others.
+### Evaluation and Validation
+- Cross-Validation: Using cross-validation to ensure that results are consistent across different splits of the dataset.
+Confusion Matrix: Generating a confusion matrix to see where the network is making mistakes.
