@@ -24,7 +24,12 @@ In order to get a sense of model performance, jump into the validation.py script
 
 <p align="center">
   <img src="models/unet/unet_CatDog_Manual_Test.png" alt="resulting test in validation.py with u-net model" />
-  <em>U-Net Model Test Results</em>
+  <em>U-Net Model Test Results for Cat/Dog</em>
+</p>
+
+<p align="center">
+  <img src="models/quickcnn/PlaneCar/quickcnn_PlaneCar_Manual_Test.png" alt="resulting test in validation.py with u-net model" />
+  <em>Quick CNN Model Test Results for Plane/Car</em>
 </p>
 
 Models are implemented in nn_models file. If you want to add models, write a function of your model in nn_models.py, then, add it to if states of trainer.py, add it to the model names in first lines of the code commented for easier access.
@@ -32,7 +37,15 @@ Make sure to create a directory with the same name in models/, otherwise it will
 ## Outputs
 Trainer gives a summary of network while running. After the model gets trained, it plots the error and accuracy of train and test data and saves it in model directory. Validation also saves the manual test output in model directory.
 
+Overally, it can be seen that model isn't trained soo well in Cat/Dog test, but is very good in other test such as Car/Plane test. It can be predicted that e.g. if we test the network with Deer/Horse, it will not pass an accuracy of 70-80%, but will perfectly work in e.g. ship/Truck and Bird/Frog case.  
+
 <p align="center">
   <img src="models/unet/unet_AccuracyLoss_plot.png" alt="cnn" />
-  <em>U-Net Accuracy/Loss Per Epochs</em>
+  <em>U-Net Accuracy/Loss Per Epoch for Cat/Dog</em>
 </p>
+
+<p align="center">
+  <img src="models/quickcnn/PlaneCar/PlaneCar_quickcnn_AccuracyLoss_plot.png" alt="cnn" />
+  <em>Quick CNN Model Accuracy/Loss Per Epoch for Plane/Car</em>
+</p>
+
