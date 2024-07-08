@@ -7,6 +7,7 @@ import numpy as np
 images_path = os.path.join('.','Images','CD')
 model_name = 'unet' # cnn / unet / quickcnn / param #
 model_dir = os.path.join('.','models',model_name)
+chosen_classes = ['Cat','Dog']
 
 classes_labels = ['Airplane','Automobile','Bird','Cat','Deer','Dog','Frog','Horse','Ship','Truck']
 
@@ -26,7 +27,7 @@ for i in range(len(Img)):
     plt.xticks([]); plt.yticks([])
     certainty, prediction = max(model.predict(np.array([Img[i]]))[0]),np.argmax(model.predict(np.array([Img[i]]))[0])
     plt.xlabel(classes_labels[prediction] + f' %{certainty:.2f}')
-fig.set_size_inches(13.6, 7.6)
+fig.set_size_inches(13.5966,  7.6481)
 plt.suptitle(model_name.upper() + ' Manual Test')
-plt.savefig(os.path.join(model_dir,model_name)+'_CatDog_Manual_Test.png',dpi=141)
+plt.savefig(os.path.join(model_dir,model_name)+'_'+chosen_classes[0]+chosen_classes[1]+'_validation.png',dpi=141.2120)
 plt.show()

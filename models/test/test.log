@@ -1,4 +1,3 @@
-| is pooling, -> is flatten
 Loss: 0.5979, Accuracy: 0.8020 for Cat/Dog and 20 epochs - 
 Loss: 0.6933, Accuracy: 0.5000 for Cat/Dog and 20 epochs - unstable
 Loss: 1.0119, Accuracy: 0.7510 for Cat/Dog and 20 epochs - 

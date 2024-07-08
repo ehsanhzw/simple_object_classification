@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
-model_name = 'test' # cnn / unet / quickcnn / param / slowunet / test #
+model_name = 'quickcnn' # cnn / unet / quickcnn / param / slowunet / test #
 chosen_classes = ['Cat','Dog'] # Choose two
-epochs = 20
+epochs = 5
 
 model_dir = os.path.join('.','models',model_name)
 
@@ -52,7 +52,7 @@ match model_name:
 model.compile(optimizer='adam',loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 history = model.fit(train_images,train_labels,epochs=epochs,validation_data=(test_images,test_labels))
 
-utils.plot_model(model, show_shapes=True, show_layer_names=True, to_file=os.path.join(model_dir,model_name)+'_model.png')
+utils.plot_model(model, show_shapes=True, show_layer_names=True, to_file=os.path.join(model_dir,model_name)+'_structure.png')
 print(model.summary())
 
 fig = plt.figure()
@@ -72,12 +72,12 @@ plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper right')
 plt.tight_layout()
 plt.suptitle(model_name.upper()+' Model Accuracy/Loss Per Epoch for '+chosen_classes[0]+'/'+chosen_classes[1])
-fig.set_size_inches(13.598, 7.6481)
-plt.savefig(os.path.join(model_dir,model_name)+'_AccuracyLoss_plot.png',dpi=141.21)
+fig.set_size_inches(13.5966, 7.6481)
+plt.savefig(os.path.join(model_dir,model_name)+'_'+chosen_classes[0]+chosen_classes[1]+'_performance.png',dpi=141.2120)
 plt.show()
 
 loss,accuracy = model.evaluate(test_images,test_labels)
 f = open(os.path.join(model_dir,model_name)+'.log', 'a')
 f.write(f'Loss: {loss:.4f}, Accuracy: {accuracy:.4f} for '+chosen_classes[0]+'/'+chosen_classes[1]+' and '+str(epochs)+' epochs - \n')
 f.close()
-model.save(os.path.join(model_dir,model_name)+'_model.keras')
+#model.save(os.path.join(model_dir,model_name)+'_model.keras')

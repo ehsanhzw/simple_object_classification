@@ -26,12 +26,12 @@ trainer.py is used to train the model with the cifar-10 datasets. It uses chosen
 In order to get a sense of model performance, jump into the validation.py script and change the model_name according to the model you want to test. This file uses the images in the project which are manually gathered from the internet to test the network. Make sure the paths are correct in the first lines of this code. Also, if you trained the network for other objects such as planes and cars, change the images_path variable and make sure the images can be found in that directory and don't include anything except images in that folder. 
 
 <p align="center">
-  <img src="models/unet/unet_CatDog_Manual_Test.png" alt="resulting test in validation.py with u-net model" />
+  <img src="models/unet/unet_CatDog_validation.png" alt="resulting test in validation.py with u-net model" />
   <em>U-Net Model Test Results for Cat/Dog</em>
 </p>
 
 <p align="center">
-  <img src="models/quickcnn/PlaneCar/quickcnn_PlaneCar_Manual_Test.png" alt="resulting test in validation.py with u-net model" />
+  <img src="models/quickcnn/quickcnn_AirplaneAutomobile_validation.png" alt="resulting test in validation.py with quick cnn-net model" />
   <em>Quick CNN Model Test Results for Plane/Car</em>
 </p>
 
@@ -43,12 +43,12 @@ Trainer gives a summary of network while running. After the model gets trained, 
 Overally, it can be seen that model isn't trained soo well in Cat/Dog test, but is very good in other test such as Car/Plane test. It can be predicted that e.g. if we test the network with Deer/Horse, it will not pass an accuracy of 70-80%, but will perfectly work in e.g. ship/Truck and Bird/Frog case.  
 
 <p align="center">
-  <img src="models/unet/unet_AccuracyLoss_plot.png" alt="cnn" />
+  <img src="models/unet/unet_CatDog_performance.png" alt="cnn" />
   <em>U-Net Accuracy/Loss Per Epoch for Cat/Dog</em>
 </p>
 
 <p align="center">
-  <img src="models/quickcnn/PlaneCar/PlaneCar_quickcnn_AccuracyLoss_plot.png" alt="cnn" />
+  <img src="models/quickcnn/quickcnn_AirplaneAutomobile_performance.png" alt="cnn" />
   <em>Quick CNN Model Accuracy/Loss Per Epoch for Plane/Car</em>
 </p>
 

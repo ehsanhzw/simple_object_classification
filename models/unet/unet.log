@@ -1,1 +1,2 @@
-Loss: 0.5684, Accuracy: 0.8255
+Loss: 0.5684, Accuracy: 0.8255 for Cat/Dog and 20 epochs - 
+Loss: 1.6064, Accuracy: 0.7910 for Cat/Dog and 100 epochs - 
