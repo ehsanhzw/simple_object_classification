@@ -111,3 +111,55 @@ def slowunet_model(input_shape=(32,32,3)):
     outputs = layers.Dense(10, activation='softmax')(d2)
     model = models.Model(inputs, outputs)
     return model
+
+def test_model(input_shape):
+    inputs = layers.Input(shape=input_shape)
+    x1 = layers.Conv2D(32, (3, 3), activation='relu', padding='same')(inputs)
+    x1 = layers.Dropout(.1)(x1)
+    x1 = layers.MaxPooling2D((2, 2))(x1)
+    x1 = layers.Conv2D(64, (3, 3), activation='relu', padding='same')(x1)
+    x1 = layers.Dropout(.1)(x1)
+    x1 = layers.MaxPooling2D((2, 2))(x1)
+    x1 = layers.Conv2D(128, (3, 3), activation='relu', padding='same')(x1)
+    x1 = layers.Dropout(.1)(x1)
+    x1 = layers.MaxPooling2D((2, 2))(x1)
+    x1 = layers.Conv2D(128, (3, 3), activation='relu', padding='same')(x1)
+    x1 = layers.Dropout(.1)(x1)
+    x1 = layers.MaxPooling2D((2, 2))(x1) #
+
+    x2 = layers.Conv2D(32, (5, 5), activation='relu', padding='same')(inputs)
+    x2 = layers.Dropout(.1)(x2)
+    x2 = layers.MaxPooling2D((2, 2))(x2)
+    x2 = layers.Conv2D(64, (5, 5), activation='relu', padding='same')(x2)
+    x2 = layers.Dropout(.1)(x2)
+    x2 = layers.MaxPooling2D((2, 2))(x2)
+    x2 = layers.Conv2D(128, (5, 5), activation='relu', padding='same')(x2)
+    x2 = layers.Dropout(.1)(x2)
+    x2 = layers.MaxPooling2D((2, 2))(x2)
+    x2 = layers.Conv2D(128, (5, 5), activation='relu', padding='same')(x2)
+    x2 = layers.Dropout(.1)(x2)
+    x2 = layers.MaxPooling2D((2, 2))(x2) #
+
+    x3 = layers.Conv2D(32, (7, 7), activation='relu', padding='same')(inputs)
+    x3 = layers.Dropout(.1)(x3)
+    x3 = layers.MaxPooling2D((2, 2))(x3)
+    x3 = layers.Conv2D(64, (7, 7), activation='relu', padding='same')(x3)
+    x3 = layers.Dropout(.1)(x3)
+    x3 = layers.MaxPooling2D((2, 2))(x3)
+    x3 = layers.Conv2D(128, (7, 7), activation='relu', padding='same')(x3)
+    x3 = layers.Dropout(.1)(x3)
+    x3 = layers.MaxPooling2D((2, 2))(x3)
+    x3 = layers.Conv2D(128, (7, 7), activation='relu', padding='same')(x3)
+    x3 = layers.Dropout(.1)(x3)
+    x3 = layers.MaxPooling2D((2, 2))(x3) #
+    
+    conc = layers.Concatenate()([x1, x2, x3])
+    conc = layers.Dropout(.1)(conc)
+    flat = layers.Flatten()(conc)
+    fc = layers.Dense(386, activation='relu')(flat)
+    fc = layers.Dropout(.1)(fc)
+    fc = layers.Dense(96, activation='relu')(fc)
+    outputs = layers.Dense(10, activation='softmax')(fc)
+    model = models.Model(inputs,outputs)
+    
+    return model
