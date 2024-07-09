@@ -55,7 +55,7 @@ Overally, it can be seen that model isn't trained soo well in Cat/Dog test, but 
 ## Probable Ways to Improve
 Cats and dogs are visually more similar to each other than, for example, planes and cars. This similarity might make it harder for the network to distinguish between them. Considering tons of breeds out there with many appearance distinctions, we immediately understand that the problem might even be elsewhere.
 
-As the cat and dog dataset issue annoyingly remains, I may want to change the datasets as well as the models. It seems like the accuracy will increase in microscopic scale in this procedure of testing models. I have a limited ideas at the moment that may fix the issue (Or not). Many of these solutions are not even my idea. The hard part is prioritizing these solutions.
+As the cat and dog dataset issue annoyingly remains, I may want to change the datasets as well as the models. It seems like the accuracy will increase in microscopic scale in this procedure of testing models. I have a limited ideas at the moment that may fix the issue (Or not).
 
 ### Augmentation Techniques
 Applying various data augmentation techniques (like rotation, flipping, zooming, etc.) to increase the diversity of training data. This may help the network generalize better.
