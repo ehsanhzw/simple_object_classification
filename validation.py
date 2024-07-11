@@ -1,10 +1,14 @@
-from keras import models
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+import tensorflow as tf
+tf.get_logger().setLevel('INFO')
+
+from keras import models
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 
-images_path = os.path.join('.','Images','CD')
+images_path = os.path.join('.','Images','CD') # CD / PC
 model_name = 'unet' # cnn / unet / quickcnn / param #
 model_dir = os.path.join('.','models',model_name)
 chosen_classes = ['Cat','Dog']

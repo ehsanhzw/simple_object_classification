@@ -1,12 +1,16 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+import tensorflow as tf
+tf.get_logger().setLevel('INFO')
+
 from nn_models import *
 from keras import datasets, utils
 import matplotlib.pyplot as plt
 import numpy as np
-import os
 
 model_name = 'quickcnn' # cnn / unet / quickcnn / param / slowunet / test #
 chosen_classes = ['Cat','Dog'] # Choose two
-epochs = 5
+epochs = 20
 
 model_dir = os.path.join('.','models',model_name)
 
