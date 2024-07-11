@@ -4,3 +4,4 @@ Loss: 1.0119, Accuracy: 0.7510 for Cat/Dog and 20 epochs -
 Loss: 1.0073, Accuracy: 0.7815 for Cat/Dog and 20 epochs - 
 Loss: 1.2652, Accuracy: 0.7790 for Cat/Dog and 20 epochs - parallel
 Loss: 0.5534, Accuracy: 0.7885 for Cat/Dog and 20 epochs - parallel with dropout
+Loss: 1.1724, Accuracy: 0.7980 for Cat/Dog and 100 epochs - 
