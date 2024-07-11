@@ -53,23 +53,22 @@ Overally, it can be seen that model isn't trained soo well in Cat/Dog test, but 
 </p>
 
 ## Probable Ways to Improve
-Cats and dogs are visually more similar to each other than, for example, planes and cars. This similarity might make it harder for the network to distinguish between them. Considering tons of breeds out there with many appearance distinctions, we immediately understand that the problem might even be elsewhere.
+Cats and dogs are visually more similar to each other than, for example, planes and cars. This similarity makes the design of optimum neural network very complex. Considering tons of breeds out there with many appearance distinctions, we naturally guess that the model must be a bit more complicated than a typical cnn. But, going too hard with size of cnn, overfitting might occur and if we look at the problem very simplisticly, it leads to underfitting of network.
 
-As the cat and dog dataset issue annoyingly remains, I may want to change the datasets as well as the models. It seems like the accuracy will increase in microscopic scale in this procedure of testing models. I have a limited ideas at the moment that may fix the issue (Or not).
+By far, the accuracy of model for cats and dogs classification, increased in microscopic scale with this procedure of testing models. I have a limited ideas at the moment that may fix the issue (Or not).
 
 ### Augmentation Techniques
-Applying various data augmentation techniques (like rotation, flipping, zooming, etc.) to increase the diversity of training data. This may help the network generalize better.
+Applying various data augmentation techniques (like rotation, flipping, zooming, etc.) to increase the diversity of training data. This may help the network generalize better. But if we are not careful with the augmentation process, it leads to greater noise and more problems.
 ### Network Architecture
-Tens of models are tested by now and the improvements are very tiny and ignorable. I doubt the problem is with the architecture, because I already demonstrated that the models work perfectly with other datasets. However, I include the theoretical architectural problems that the network may have been suffering from. 
+Tens of models are tested by now and the improvements are very tiny and ignorable. I already demonstrated that the models work perfectly with other datasets. However, I include common architectural problems that the networks may have been suffering from. For instance, the chance of overfitting is high, but as I shrink the network, after the threshold is passed, the network gets quickly underfit. So finding this threshold is essential if achievable.
 - Network Complexity: It might be that the architecture is too simple or too complex for the task. I should check that the network has the right balance of depth and width in future tests.
-- Overfitting/Underfitting: It might ber that network is overfitting or underfitting. Overfitting can be addressed with regularization techniques like dropout (which I used in all models by now), L2 regularization, etc. Underfitting might require a more complex model which I doubt is needed. 
-- Pre-trained Models: Using a pre-trained model like VGG, ResNet, or EfficientNet and fine-tuning it on cat/dog dataset is one solution, but this is conflicting with the definition of project so I simply skip it for now at least.
+- Overfitting/Underfitting: It might be that network is overfitting or underfitting. Overfitting can be addressed with regularization techniques like dropout, L1/L2 regularization, etc. 
+- Pre-trained Models: Using a pre-trained model like VGG, ResNet, or EfficientNet and fine-tuning it on cat/dog dataset is one solution. I skip it for now because I am not familiar with those networks and the effort might be useless.
 ### Training Process
-- Learning Rate: Experimenting with different learning rates. Not probable, but worth a shot. Sometimes learning rate that's too high or too low can lead to low accuracy.
-- Loss Function: Ensuring that an appropriate loss function is used for the binary classification task which must be correct.
-- Optimizer: Different optimizers can lead to different results. We used Adam, but other options to check are RMSprop, or SGD with momentum, or some others.
+- Learning Rate: Experimenting with different learning rates. Worth a shot, in the future tests. Learning rate that's too high or too low can lead to low accuracy.
+- Loss Function: Checking that an appropriate loss function is used for the classification task or not.
+- Optimizer: Different optimizers can lead to different results. I used Adam, but other options to check are RMSprop, SGD with momentum, or some others.
 ### Evaluation and Validation
 - Cross-Validation: Using cross-validation to ensure that results are consistent across different splits of the dataset.
-- Confusion Matrix: Generating a confusion matrix to see where the network is making mistakes.
 ### Fixing Probable Overfit
-As the accuracy & loss plots are shown above, it seems like in some cases overfit occured, however the loss is not that much increased after this happens and most models weren't very sensitive. However I shall test less complex models to see if that's realy the case. Underfit never happened and if did, the model was not included in the tests and main models.
+As the accuracy and loss plots are shown above, it seems like in some cases overfit occured. However, the loss is not that much decreased after a bit of modifications on network and regularization methods. Currently, my main focus is on designing new networks that reduce overfit and increase accuracy.
