@@ -1,5 +1,5 @@
 ## Neural Network Models:
-from keras import models, layers
+from keras import models, layers, regularizers
 def cnn_model(input_shape=(32,32,3)):
     model = models.Sequential()
     model.add(layers.Conv2D(32, (3,3), activation='relu',input_shape=input_shape, padding='same'))
@@ -99,10 +99,10 @@ def slowunet_model(input_shape=(32,32,3)):
     c4 = layers.Conv2D(512, (3,3), activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(p3)
     c4 = layers.Conv2D(512, (3,3), activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(c4)
     d4 = layers.Dropout(0.5)(c4)
-    # p4 = layers.MaxPooling2D(pool_size=(2, 2))(d4)
-    # c5 = layers.Conv2D(1024, (3,3), activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(p4)
-    # c5 = layers.Conv2D(1024, (3,3), activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(c5)
-    # d5 = layers.Dropout(0.5)(c5)
+    p4 = layers.MaxPooling2D(pool_size=(2, 2))(d4)
+    c5 = layers.Conv2D(1024, (3,3), activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(p4)
+    c5 = layers.Conv2D(1024, (3,3), activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(c5)
+    d5 = layers.Dropout(0.5)(c5)
     flat = layers.Flatten()(d4)
     fc1 = layers.Dense(1024, activation='relu')(flat)
     d1 = layers.Dropout(0.2)(fc1)
