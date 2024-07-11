@@ -61,7 +61,7 @@ As the cat and dog dataset issue annoyingly remains, I may want to change the da
 Applying various data augmentation techniques (like rotation, flipping, zooming, etc.) to increase the diversity of training data. This may help the network generalize better.
 ### Network Architecture
 Tens of models are tested by now and the improvements are very tiny and ignorable. I doubt the problem is with the architecture, because I already demonstrated that the models work perfectly with other datasets. However, I include the theoretical architectural problems that the network may have been suffering from. 
-- Network Complexity: It might be that the architecture is too simple or too complex for the task, in order to check that the network has the right balance of depth and width.
+- Network Complexity: It might be that the architecture is too simple or too complex for the task. I should check that the network has the right balance of depth and width in future tests.
 - Overfitting/Underfitting: It might ber that network is overfitting or underfitting. Overfitting can be addressed with regularization techniques like dropout (which I used in all models by now), L2 regularization, etc. Underfitting might require a more complex model which I doubt is needed. 
 - Pre-trained Models: Using a pre-trained model like VGG, ResNet, or EfficientNet and fine-tuning it on cat/dog dataset is one solution, but this is conflicting with the definition of project so I simply skip it for now at least.
 ### Training Process
