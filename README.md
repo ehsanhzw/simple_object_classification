@@ -68,6 +68,7 @@ Tens of models are tested by now and the improvements are very tiny and ignorabl
 - Learning Rate: Experimenting with different learning rates. Worth a shot, in the future tests. Learning rate that's too high or too low can lead to low accuracy.
 - Loss Function: Checking that an appropriate loss function is used for the classification task or not.
 - Optimizer: Different optimizers can lead to different results. I used Adam, but other options to check are RMSprop, SGD with momentum, or some others.
+- Early stopping: Meaning that we stop as soon as loss started to grow steadily. This is not included yet, but from the performance plots, we can estimate the number of epochs to achieve the best accuracy. I will include this in the future to make the training process more active.
 ### Evaluation and Validation
 - Cross-Validation: Using cross-validation to ensure that results are consistent across different splits of the dataset.
 ### Fixing Probable Overfit
