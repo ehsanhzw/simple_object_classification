@@ -7,6 +7,7 @@ from nn_models import *
 from keras import datasets, utils
 import matplotlib.pyplot as plt
 import numpy as np
+import time
 
 model_name = 'quickcnn' # cnn / unet / quickcnn / param / slowunet / test #
 chosen_classes = ['Cat','Dog'] # Choose two
@@ -54,20 +55,27 @@ match model_name:
         print('Not a valid model name!')
 
 model.compile(optimizer='adam',loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+t = time.time()
 history = model.fit(train_images,train_labels,epochs=epochs,validation_data=(test_images,test_labels))
+elapsed_time = time.time() - t
+print(f'compile and fit time elapsed : {elapsed_time:.2f}s for ', epochs, ' epochs')
 
 utils.plot_model(model, show_shapes=True, show_layer_names=True, to_file=os.path.join(model_dir,model_name)+'_structure.png')
 print(model.summary())
 
 fig = plt.figure()
-plt.subplot(2,1,1)
+ax = plt.subplot(2,1,1)
+ax.set_xticks(np.arange(0, epochs+1, 2))
+ax.grid(which='both')
 plt.plot(history.history['accuracy'])
 plt.plot(history.history['val_accuracy'])
 plt.title('model accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='lower right')
-plt.subplot(2,1,2)
+ax =plt.subplot(2,1,2)
+ax.set_xticks(np.arange(0, epochs+1, 2))
+ax.grid(which='both')
 plt.plot(history.history['loss'])
 plt.plot(history.history['val_loss'])
 plt.title('model loss')
@@ -82,6 +90,6 @@ plt.show()
 
 loss,accuracy = model.evaluate(test_images,test_labels)
 f = open(os.path.join(model_dir,model_name)+'.log', 'a')
-f.write(f'Loss: {loss:.4f}, Accuracy: {accuracy:.4f} for '+chosen_classes[0]+'/'+chosen_classes[1]+' and '+str(epochs)+' epochs - \n')
+f.write(f'Loss: {loss:.4f}, Accuracy: {accuracy:.4f} for '+chosen_classes[0]+'/'+chosen_classes[1]+' and '+str(epochs)+f' epochs - train time: {elapsed_time:.2f} seconds - \n')
 f.close()
 model.save(os.path.join(model_dir,model_name)+'_model.keras')

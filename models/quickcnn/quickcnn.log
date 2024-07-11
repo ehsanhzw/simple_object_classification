@@ -1,3 +1,5 @@
 Loss: 0.6239, Accuracy: 0.7525 for Cat/Dog and 20 epochs - 
 Loss: 0.1284, Accuracy: 0.9595 for Airplane/Automobile and 20 epochs - 
 Loss: 0.5179, Accuracy: 0.7405 for Cat/Dog and 5 epochs - 
+Loss: 0.6430, Accuracy: 0.7490 for Cat/Dog and 20 epochs - train time: 24.26 seconds - 
+Loss: 0.6787, Accuracy: 0.7525 for Cat/Dog and 20 epochs - train time: 24.20 seconds - 
