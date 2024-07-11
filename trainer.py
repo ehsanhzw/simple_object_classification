@@ -85,7 +85,7 @@ plt.legend(['train', 'test'], loc='upper right')
 plt.tight_layout()
 plt.suptitle(model_name.upper()+' Model Accuracy/Loss Per Epoch for '+chosen_classes[0]+'/'+chosen_classes[1])
 fig.set_size_inches(13.5966, 7.6481)
-plt.savefig(os.path.join(model_dir,model_name)+'_'+chosen_classes[0]+chosen_classes[1]+'_performance.svg', dpi=141.2120, format='svg')
+plt.savefig(os.path.join(model_dir,model_name)+'_'+chosen_classes[0]+chosen_classes[1]+'_performance.png', dpi=141.2120, format='png')
 plt.show()
 
 loss,accuracy = model.evaluate(test_images,test_labels)
