@@ -1,1 +1,3 @@
 Loss: 1.1820, Accuracy: 0.7825 for Cat/Dog and 20 epochs - 
+Loss: 0.4633, Accuracy: 0.8040 for Cat/Dog and 10 epochs - train time: 81.23 seconds - 
+Loss: 0.7310, Accuracy: 0.7965 for Cat/Dog and 20 epochs - train time: 142.29 seconds - 
