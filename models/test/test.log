@@ -5,3 +5,10 @@ Loss: 1.0073, Accuracy: 0.7815 for Cat/Dog and 20 epochs -
 Loss: 1.2652, Accuracy: 0.7790 for Cat/Dog and 20 epochs - parallel
 Loss: 0.5534, Accuracy: 0.7885 for Cat/Dog and 20 epochs - parallel with dropout
 Loss: 1.1724, Accuracy: 0.7980 for Cat/Dog and 100 epochs - 
+Loss: 0.5935, Accuracy: 0.7855 for Cat/Dog and 20 epochs - train time: 44.24 seconds - 
+Loss: 0.6483, Accuracy: 0.7920 for Cat/Dog and 20 epochs - train time: 51.62 seconds - 
+Loss: 0.6230, Accuracy: 0.7825 for Cat/Dog and 20 epochs - train time: 55.86 seconds - 
+Loss: 0.5563, Accuracy: 0.7810 for Cat/Dog and 20 epochs - train time: 47.19 seconds - 
+Loss: 0.5083, Accuracy: 0.7920 for Cat/Dog and 100 epochs - train time: 85.72 seconds - 
+Loss: 0.5426, Accuracy: 0.8090 for Cat/Dog and 100 epochs - train time: 140.44 seconds - 
+Loss: 0.5515, Accuracy: 0.7915 for Cat/Dog and 100 epochs - train time: 136.55 seconds - 
