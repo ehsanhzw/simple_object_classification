@@ -8,6 +8,7 @@ from keras import datasets, utils
 import matplotlib.pyplot as plt
 import numpy as np
 import time
+from math import ceil
 
 model_name = 'quickcnn' # cnn / unet / quickcnn / param / slowunet / test #
 chosen_classes = ['Cat','Dog'] # Choose two
@@ -54,9 +55,9 @@ match model_name:
     case _:
         print('Not a valid model name!')
 
-model.compile(optimizer='adam',loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+model.compile(optimizer='adam',loss='sparse_categorical_crossentropy', metrics=['accuracy']) # OPT: adam, DGD, 
 t = time.time()
-history = model.fit(train_images,train_labels,epochs=epochs,validation_data=(test_images,test_labels))
+history = model.fit(train_images,train_labels,epochs=epochs,shuffle=True,validation_data=(test_images,test_labels))
 elapsed_time = time.time() - t
 print(f'compile and fit time elapsed : {elapsed_time:.2f}s for ', epochs, ' epochs')
 
@@ -65,7 +66,7 @@ print(model.summary())
 
 fig = plt.figure()
 ax = plt.subplot(2,1,1)
-ax.set_xticks(np.arange(0, epochs+1, 2))
+ax.set_xticks(np.arange(0, epochs+1, ceil(epochs/50)))
 ax.grid(which='both')
 plt.plot(history.history['accuracy'])
 plt.plot(history.history['val_accuracy'])
@@ -74,7 +75,7 @@ plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='lower right')
 ax =plt.subplot(2,1,2)
-ax.set_xticks(np.arange(0, epochs+1, 2))
+ax.set_xticks(np.arange(0, epochs+1, ceil(epochs/50)))
 ax.grid(which='both')
 plt.plot(history.history['loss'])
 plt.plot(history.history['val_loss'])
