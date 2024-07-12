@@ -37,6 +37,15 @@ In order to get a sense of model performance, jump into the validation.py script
 
 Models are implemented in nn_models file. If you want to add models, write a function of your model in nn_models.py, then, add it to match case statement of trainer.py, add it to the model names in first lines of the code commented for easier access.
 Make sure to create a directory with the same name in models/, otherwise it will raise error in this version until I fix that.
+
+### Dependencies
+- numpy
+- matplotlib
+- tensorflow (keras)
+- opencv
+- pydot
+- graphvis for your os
+
 ## Outputs
 Trainer gives a summary of network while running. After the model gets trained, it plots the error and accuracy of train and test data and saves it in model directory. Validation also saves the manual test output in model directory.
 
