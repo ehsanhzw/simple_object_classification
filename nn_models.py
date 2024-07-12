@@ -2,7 +2,8 @@
 from keras import models, layers, regularizers
 def cnn_model(input_shape=(32,32,3)):
     model = models.Sequential()
-    model.add(layers.Conv2D(32, (3,3), activation='relu',input_shape=input_shape, padding='same'))
+    model.add(layers.Input(input_shape))
+    model.add(layers.Conv2D(32, (3,3), activation='relu', padding='same'))
     model.add(layers.Dropout(0.1))
     model.add(layers.MaxPooling2D(2,2))
     model.add(layers.Conv2D(64, (3,3), activation='relu', padding='same'))
@@ -54,7 +55,8 @@ def unet_model(input_shape=(32,32,3)):
 
 def quickcnn_model(input_shape=(32,32,3)):
     model = models.Sequential()
-    model.add(layers.Conv2D(32, (3,3), padding='same', activation='relu', input_shape=input_shape))
+    model.add(layers.Input(input_shape))
+    model.add(layers.Conv2D(32, (3,3), padding='same', activation='relu'))
     model.add(layers.Dropout(0.15))
     model.add(layers.MaxPooling2D(pool_size=(2,2)))
     model.add(layers.Conv2D(64, (3,3), padding='same', activation='relu'))
@@ -69,7 +71,8 @@ def quickcnn_model(input_shape=(32,32,3)):
 def param_model(input_shape=(32,32,3)):
     # https://github.com/Param-GG/Animal-Classification-CNN
     model = models.Sequential()
-    model.add(layers.Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same', input_shape=input_shape))
+    model.add(layers.Input(input_shape))
+    model.add(layers.Conv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
     model.add(layers.Dropout(0.16))
     model.add(layers.MaxPooling2D((2, 2)))
     model.add(layers.Conv2D(64, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
