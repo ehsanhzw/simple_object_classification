@@ -15,6 +15,9 @@ chosen_classes = ['Cat','Dog'] # Choose two
 epochs = 20
 
 model_dir = os.path.join('.','models',model_name)
+if not os.path.exists(model_dir):
+    os.makedirs(model_dir)
+    print('model directory "'+str(model_dir)+'" was added to project')
 
 (train_images,train_labels),(test_images,test_labels) = datasets.cifar10.load_data()
 train_images,test_images=train_images/255,test_images/255
