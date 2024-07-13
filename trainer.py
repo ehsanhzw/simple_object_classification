@@ -5,6 +5,7 @@ tf.get_logger().setLevel('INFO')
 
 from nn_models import *
 from keras import datasets, utils
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import matplotlib.pyplot as plt
 import numpy as np
 import time
@@ -20,7 +21,6 @@ if not os.path.exists(model_dir):
     print('model directory "'+str(model_dir)+'" was added to project')
 
 (train_images,train_labels),(test_images,test_labels) = datasets.cifar10.load_data()
-train_images,test_images=train_images/255,test_images/255
 classes_labels = ['Airplane','Automobile','Bird','Cat','Deer','Dog','Frog','Horse','Ship','Truck']
 
 ## only cat/dog datasets are selected:
@@ -32,6 +32,31 @@ test_filter = np.where((test_labels == classes_labels.index(chosen_classes[0])) 
 test_images = test_images[test_filter]
 test_labels = test_labels[test_filter]
 print('shape of test images dataset: ', np.shape(test_images))
+
+## Image augmentation
+datagen = ImageDataGenerator(
+    rotation_range = 90,
+    shear_range = .3,
+    zoom_range = .2,
+    horizontal_flip = True,
+    vertical_flip = True,
+    brightness_range = (.6,1.4))
+
+M = 0 # Number of Augmented Images per Image in Train Dataset
+if M > 0:
+    aug_images = []; aug_labels = []
+    for i in range(len(train_images)):
+        aug_iter = datagen.flow(np.reshape(train_images[i],(1,32,32,3)), batch_size=1)
+        for j in range(M):
+            image = next(aug_iter)[0].astype('uint8')
+            aug_images.append(image)
+            aug_labels.append(train_labels[i])
+        if i%1000 == 999:
+                print('train images are augmented by',(i+1)*M,'new images')
+    train_images = np.append(train_images,aug_images,axis=0).astype('uint8')
+    train_labels = np.append(train_labels,aug_labels,axis=0).astype('uint8')
+
+train_images,test_images=train_images/255,test_images/255
 
 ## Uncomment if you want to view first samples of selected dataset
 # for i in range(12):
